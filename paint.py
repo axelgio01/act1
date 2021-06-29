@@ -14,6 +14,8 @@ from turtle import *
 
 from freegames import vector
 
+from math import hypot
+
 
 def line(start, end):
     "Draw line from start to end."
@@ -39,7 +41,19 @@ def square(start, end):
 
 def circle(start, end):
     "Draw circle from start to end."
-    pass  # TODO
+    # Cambiar el scope de donde se esta llamando a circle
+    import turtle
+    # Calcular el radio del circulo con el teorema de pitagoras
+    radius = hypot(abs(start.x - end.x), abs(start.y - end.y))
+
+    up()
+    # Centro desde donde se va a estar dibujando el circulo
+    goto(start.x, start.y - radius)
+    down()
+    begin_fill()
+    # Se manda a llamar a la funcion circle(radius) de turtle
+    circle(radius)
+    end_fill()
 
 
 def rectangle(start, end):
