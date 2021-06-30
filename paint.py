@@ -75,7 +75,17 @@ def rectangle(start, end):
 
 def triangle(start, end):
     "Draw triangle from start to end."
-    pass  # TODO
+    # Lado del tamaño de la distancia de los puntos seleccionados
+    side = hypot(abs(start.x - end.x), abs(start.y - end.y))
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+    # Genera un triangulo equilatero
+    for i in range(3):
+        forward(side)
+        left(120)
+    end_fill()
 
 
 def tap(x, y):
